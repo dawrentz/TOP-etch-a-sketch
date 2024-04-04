@@ -10,8 +10,6 @@ function createRow() {
     row.style.display = "flex";
     row.style.marginBottom = "1px";
     row.style.justifyContent = "center";
-
-
 }
 
 // Create 16 squares
@@ -20,6 +18,7 @@ function createSquares(rowDiv) {
         const square = document.createElement("div");
         square.style.height = "20px";
         square.style.width = "20px";
+        square.className = "square";
         rowDiv.appendChild(square);
     }
 }
@@ -28,6 +27,19 @@ function createSquares(rowDiv) {
 for(j = 0; j < 16; j++) {
     createRow();
 }
+
+const allSquares = document.querySelectorAll(".square");
+// Change square color when enter. Could also assign a class and add style to that class in css
+allSquares.forEach((eachSquare) => {
+    eachSquare.addEventListener("mouseenter", function() {
+        eachSquare.style.backgroundColor = "darkslategray";
+
+    });
+
+});
+
+
+
 
 
 

@@ -1,5 +1,9 @@
 * {
     background-color: lightcoral;
-    outline: solid green 1px;
+    /* outline: solid green 1px; */
     text-align: center;
+}
+
+.square {
+    outline: solid grey 1px;
 }
