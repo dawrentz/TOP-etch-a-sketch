@@ -1,7 +1,11 @@
-// Declarations
+//declarations
 const submitBtn = document.querySelector("#submitBtn");
 
-//Run gridCreation with button click
+//create default grid
+createRows(100, 100);
+addSketchEffect();
+
+//run new iteration on button click
 submitBtn.addEventListener("click", function() {
     //erase and recreate gridContainer
     document.querySelector("body").removeChild(document.querySelector("#gridContainer"));
@@ -9,96 +13,51 @@ submitBtn.addEventListener("click", function() {
     gridContainer.id = "gridContainer";
     document.querySelector("body").appendChild(gridContainer);
 
-
-
-
-    // Declare user inputs
+    //declare user inputs
     const rowsInput = +document.querySelector("#rowsInput").value;
     const columnsInput = +document.querySelector("#columnsInput").value;
 
+    //check for user error and run grid creation
     if ((rowsInput < 1) || (rowsInput > 100) || (columnsInput < 1) || 
         (columnsInput > 100) || !rowsInput || !columnsInput) {
             alert("Only enter numbers between 1 and 100");
     } else {
-    createRow(rowsInput, columnsInput);
-
+    createRows(rowsInput, columnsInput);
     addSketchEffect();
     }
-
-
-
-
 });
 
-
-
-
-
-
-
-// Create a row
-function createRow(rows, columns) {
+//create rows
+function createRows(rows, columns) {
     for(j = 0; j < rows; j++) {    
         const row = document.createElement("div");
         createSquares(row, columns);
         gridContainer.appendChild(row);
 
         row.style.display = "flex";
-        // row.style.marginBottom = "1px";
         row.style.justifyContent = "center";
         row.style.flexGrow = "1";
-
     }
 }
 
-// Create 16 squares
+//create squares in row
 function createSquares(rowDiv, userColumnsInput) {
     for(i = 0; i < userColumnsInput; i++) {
         const square = document.createElement("div");
-        // square.style.height = "20px"; //remove with set size?
-        // square.style.width = "20px";
         square.className = "square";
         square.style.flexGrow = "1";
 
         rowDiv.appendChild(square);
-  
-    }
+      }
 }
 
-// loop for 16x16 grid
-// for(j = 0; j < 16; j++) {
-//     createRow();
-// }
-
-
+//add sketching illusion 
 function addSketchEffect() {
     const allSquares = document.querySelectorAll(".square");
-    // Change square color when enter. Could also assign a class and add style to that class in css
+    //change square color when enter
     allSquares.forEach((eachSquare) => {
         eachSquare.addEventListener("mouseenter", function() {
             eachSquare.style.backgroundColor = "darkslategray";
-
         });
-
     });
 }
-
-
-
-
-
-
-
-
-// const btnTest = document.createElement("button");
-// btnTest.style.height = "15px";
-// btnTest.style.backgroundColor = "blue";
-// document.querySelector("body").appendChild(btnTest);
-// btnTest.addEventListener("click", createRow);
-
-
-// for(i = 0; i < 5; i++) {
-//     console.log(777);
-// }
-
-console.log("end");
