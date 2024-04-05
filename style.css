@@ -1,5 +1,4 @@
 * {
-    /* outline: solid green 1px; */
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -14,7 +13,6 @@ body {
 
 #gridContainer {
     border: solid black 3px;
-    /* border-radius: 10px; */
     background-color: lightgrey;
     height: 500px;
     width: 500px;

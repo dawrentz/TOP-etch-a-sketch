@@ -2,7 +2,7 @@
 const submitBtn = document.querySelector("#submitBtn");
 
 //create default grid
-createRows(100, 100);
+createRows(50, 50);
 addSketchEffect();
 
 //run new iteration on button click
@@ -35,7 +35,6 @@ function createRows(rows, columns) {
         gridContainer.appendChild(row);
 
         row.style.display = "flex";
-        row.style.justifyContent = "center";
         row.style.flexGrow = "1";
     }
 }
@@ -54,10 +53,23 @@ function createSquares(rowDiv, userColumnsInput) {
 //add sketching illusion 
 function addSketchEffect() {
     const allSquares = document.querySelectorAll(".square");
-    //change square color when enter
+    //change square style when enter
     allSquares.forEach((eachSquare) => {
         eachSquare.addEventListener("mouseenter", function() {
-            eachSquare.style.backgroundColor = "darkslategray";
+            //random color
+            eachSquare.style.backgroundColor = `rgb(${randColorNum()} ${randColorNum()} ${randColorNum()})`;
+            //dark grey only
+            // eachSquare.style.backgroundColor = "darkslategray";
+            
+            //opacity bonus
+            const computedStyleSquare = window.getComputedStyle(eachSquare);
+            const currentOpacity = computedStyleSquare.opacity;
+            const newOpacity = currentOpacity - 0.1;
+            eachSquare.style.opacity = newOpacity;
         });
     });
+}
+
+function randColorNum() {
+    return (Math.floor(Math.random() * 256));
 }
