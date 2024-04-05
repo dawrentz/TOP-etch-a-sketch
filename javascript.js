@@ -1,43 +1,73 @@
-// Declare grid
+// Declarations
 const gridContainer = document.querySelector("#gridContainer");
+const submitBtn = document.querySelector("#submitBtn");
+
+//Run gridCreation with button click
+submitBtn.addEventListener("click", function() {
+    // Declare user inputs
+    const rowsInput = document.querySelector("#rowsInput").value;
+    const columnsInput = document.querySelector("#columnsInput").value;
+
+    // console.log(columnsInput);
+    createRow(rowsInput, columnsInput);
+
+    addSketchEffect();
+
+
+});
+
+
+
+
+
+
 
 // Create a row
-function createRow() {
-    const row = document.createElement("div");
-    createSquares(row);
-    gridContainer.appendChild(row);
+function createRow(rows, columns) {
+    for(j = 0; j < rows; j++) {    
+        const row = document.createElement("div");
+        createSquares(row, columns);
+        gridContainer.appendChild(row);
 
-    row.style.display = "flex";
-    row.style.marginBottom = "1px";
-    row.style.justifyContent = "center";
+        row.style.display = "flex";
+        // row.style.marginBottom = "1px";
+        row.style.justifyContent = "center";
+        row.style.flexGrow = "1";
+
+    }
 }
 
 // Create 16 squares
-function createSquares(rowDiv) {
-    for(i = 0; i < 16; i++) {
+function createSquares(rowDiv, userColumnsInput) {
+    for(i = 0; i < userColumnsInput; i++) {
         const square = document.createElement("div");
-        square.style.height = "20px";
-        square.style.width = "20px";
+        // square.style.height = "20px"; //remove with set size?
+        // square.style.width = "20px";
         square.className = "square";
+        square.style.flexGrow = "1";
+
         rowDiv.appendChild(square);
+  
     }
 }
 
 // loop for 16x16 grid
-for(j = 0; j < 16; j++) {
-    createRow();
-}
+// for(j = 0; j < 16; j++) {
+//     createRow();
+// }
 
-const allSquares = document.querySelectorAll(".square");
-// Change square color when enter. Could also assign a class and add style to that class in css
-allSquares.forEach((eachSquare) => {
-    eachSquare.addEventListener("mouseenter", function() {
-        eachSquare.style.backgroundColor = "darkslategray";
+
+function addSketchEffect() {
+    const allSquares = document.querySelectorAll(".square");
+    // Change square color when enter. Could also assign a class and add style to that class in css
+    allSquares.forEach((eachSquare) => {
+        eachSquare.addEventListener("mouseenter", function() {
+            eachSquare.style.backgroundColor = "darkslategray";
+
+        });
 
     });
-
-});
-
+}
 
 
 
@@ -58,4 +88,3 @@ allSquares.forEach((eachSquare) => {
 // }
 
 console.log("end");
-

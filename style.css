@@ -1,9 +1,63 @@
 * {
-    background-color: lightcoral;
     /* outline: solid green 1px; */
     text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-color: lightcoral;
 }
 
 .square {
     outline: solid grey 1px;
+}
+
+#gridContainer {
+    border: solid black 3px;
+    /* border-radius: 10px; */
+    background-color: lightgrey;
+    height: 500px;
+    width: 500px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* testing */
+#testGridContainer * {
+    outline: solid red 1px;
+}
+
+#testGridContainer {
+    background-color: aqua;
+    height: 500px;
+    width: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* flex-grow: 1; */
+
+
+}
+
+
+
+
+.testRow {
+    background-color: green;
+    height: 30px;
+    display: flex;
+    flex-grow: 1;
+
+}
+
+.testSquare {
+    /* width: 10px;
+    height: 10px;
+    background-color: aliceblue; */
+    flex-grow: 1;
 }
