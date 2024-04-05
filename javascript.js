@@ -1,17 +1,31 @@
 // Declarations
-const gridContainer = document.querySelector("#gridContainer");
 const submitBtn = document.querySelector("#submitBtn");
 
 //Run gridCreation with button click
 submitBtn.addEventListener("click", function() {
-    // Declare user inputs
-    const rowsInput = document.querySelector("#rowsInput").value;
-    const columnsInput = document.querySelector("#columnsInput").value;
+    //erase and recreate gridContainer
+    document.querySelector("body").removeChild(document.querySelector("#gridContainer"));
+    const gridContainer = document.createElement("div");
+    gridContainer.id = "gridContainer";
+    document.querySelector("body").appendChild(gridContainer);
 
-    // console.log(columnsInput);
+
+
+
+    // Declare user inputs
+    const rowsInput = +document.querySelector("#rowsInput").value;
+    const columnsInput = +document.querySelector("#columnsInput").value;
+
+    if ((rowsInput < 1) || (rowsInput > 100) || (columnsInput < 1) || 
+        (columnsInput > 100) || !rowsInput || !columnsInput) {
+            alert("Only enter numbers between 1 and 100");
+    } else {
     createRow(rowsInput, columnsInput);
 
     addSketchEffect();
+    }
+
+
 
 
 });
